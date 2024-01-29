@@ -21,7 +21,7 @@ import org.apache.flink.util.Collector;
  *
  * <p>and run this example with the hostname and the port as arguments.
  *
- * @see <a href="https://github.com/apache/flink/blob/master/flink-examples/flink-examples-streaming/src/main/java/org/apache/flink/streaming/examples/socket/SocketWindowWordCount.java">Flink Official Example</a>
+ * @see <a href="https://github.com/apache/flink/blob/master/flink-examples/flink-examples-streaming/src/main/java/org/apache/flink/streaming/examples/socket/SocketWindowWordCount.java">Flink official example: SocketWindowWordCount.java</a>
  */
 public class SocketWindowWordCount {
 

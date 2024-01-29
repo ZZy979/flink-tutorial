@@ -19,7 +19,7 @@ import org.apache.flink.util.Collector;
  *
  * <p>Records in each window can be processed as a batch, incrementally or with a combination of the two.</p>
  *
- * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/streaming_analytics/#window-functions"></a>
+ * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/streaming_analytics/#window-functions">Flink documentation: Window Functions</a>
  */
 public class SensorReadingProcessor {
 

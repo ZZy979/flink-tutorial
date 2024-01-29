@@ -11,7 +11,7 @@ import org.apache.flink.util.Collector;
 /**
  * Connected streams example: use a control stream to specify words which must be filtered out of the words stream.
  *
- * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/etl/#example">Flink documentation</a>
+ * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/etl/#example">Flink documentation: Connected Streams</a>
  */
 public class WordFilter {
 

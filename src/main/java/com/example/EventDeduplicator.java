@@ -12,7 +12,7 @@ import org.apache.flink.util.Collector;
 /**
  * Keyed state example: de-duplicate a stream of events, so that you only keep the first event with each key.
  *
- * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/etl/#an-example-with-keyed-state">Flink documentation</a>
+ * @see <a href="https://nightlies.apache.org/flink/flink-docs-release-1.17/docs/learn-flink/etl/#an-example-with-keyed-state">Flink documentation: An Example with Keyed State</a>
  */
 public class EventDeduplicator {
 

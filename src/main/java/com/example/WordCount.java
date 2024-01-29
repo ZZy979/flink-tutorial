@@ -15,7 +15,7 @@ import org.apache.flink.util.Collector;
  *
  * <p>Usage: <code>WordCount --input &lt;path&gt; --output &lt;path&gt;</code><br>
  *
- * @see <a href="https://github.com/apache/flink/blob/master/flink-examples/flink-examples-batch/src/main/java/org/apache/flink/examples/java/wordcount/WordCount.java">Flink Official Example</a>
+ * @see <a href="https://github.com/apache/flink/blob/master/flink-examples/flink-examples-batch/src/main/java/org/apache/flink/examples/java/wordcount/WordCount.java">Flink official example: WordCount.java</a>
  */
 public class WordCount {
 
