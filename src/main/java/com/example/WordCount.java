@@ -29,7 +29,7 @@ public class WordCount {
         env.getConfig().setGlobalJobParameters(params);
 
         // get input data
-        DataSet<String> text = env.readTextFile(params.get("input"));
+        DataSet<String> text = env.readTextFile(params.getRequired("input"));
         DataSet<Tuple2<String, Integer>> wordCounts = text
                 // split up the lines in pairs (2-tuples) containing: (word,1)
                 .flatMap(new Tokenizer())

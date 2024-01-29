@@ -9,3 +9,4 @@
 * [状态示例：事件去重](src/main/java/com/example/EventDeduplicator.java)
 * [连接流示例：单词过滤](src/main/java/com/example/WordFilter.java)
 * [窗口函数示例：处理传感器读数](src/main/java/com/example/SensorReadingProcessor.java)
+* [join流示例](src/main/java/com/example/JoiningStreams.java)
