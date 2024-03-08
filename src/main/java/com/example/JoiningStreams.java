@@ -1,6 +1,7 @@
 package com.example;
 
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
+import org.apache.flink.api.common.functions.CoGroupFunction;
 import org.apache.flink.api.common.functions.JoinFunction;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -34,8 +35,10 @@ public class JoiningStreams {
             sessionWindowJoin();
         } else if (type.equals("interval")) {
             intervalJoin();
+        } else if (type.equals("cogroup")) {
+            coGroupJoin();
         } else {
-            System.out.println("Usage: JoiningStreams --type {tumbling,sliding,session,interval}");
+            System.out.println("Usage: JoiningStreams --type {tumbling,sliding,session,interval,cogroup}");
         }
     }
 
@@ -111,6 +114,24 @@ public class JoiningStreams {
         env.execute();
     }
 
+    public static void coGroupJoin() throws Exception {
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        DataStream<Integer> orangeStream = env.fromElements(0, 1, 2, 3, 4, 5, 6, 7)
+                .assignTimestampsAndWatermarks(getWatermarkStrategy());
+        DataStream<Integer> greenStream = env.fromElements(0, 1, 3, 4, 8)
+                .assignTimestampsAndWatermarks(getWatermarkStrategy());
+
+        orangeStream.coGroup(greenStream)
+                .where(x -> 0)
+                .equalTo(x -> 0)
+                .window(TumblingEventTimeWindows.of(Time.milliseconds(2)))
+                .apply(new MyCoGroupFunction())
+                .print();
+
+        env.execute();
+    }
+
     private static WatermarkStrategy<Integer> getWatermarkStrategy() {
         return WatermarkStrategy
                 .<Integer>noWatermarks()
@@ -128,6 +149,19 @@ public class JoiningStreams {
         @Override
         public void processElement(Integer left, Integer right, Context ctx, Collector<String> out) {
             out.collect(left + "," + right);
+        }
+    }
+
+    private static class MyCoGroupFunction implements CoGroupFunction<Integer, Integer, String> {
+        @Override
+        public void coGroup(Iterable<Integer> first, Iterable<Integer> second, Collector<String> out) {
+            if (!first.iterator().hasNext()) {
+                second.forEach(b -> out.collect("null," + b));
+            } else if (!second.iterator().hasNext()) {
+                first.forEach(a -> out.collect(a + ",null"));
+            } else {
+                first.forEach(a -> second.forEach(b -> out.collect(a + "," + b)));
+            }
         }
     }
 
