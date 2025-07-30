@@ -1,4 +1,4 @@
-package com.example;
+package com.example.streaming;
 
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -36,7 +36,7 @@ public class AdultFilter {
 
         @Override
         public String toString() {
-            return name + ": age " + age.toString();
+            return name + ": age " + age;
         }
     }
 }

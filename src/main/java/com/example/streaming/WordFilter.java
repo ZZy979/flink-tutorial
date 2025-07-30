@@ -1,4 +1,4 @@
-package com.example;
+package com.example.streaming;
 
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;

@@ -1,4 +1,4 @@
-package com.example;
+package com.example.streaming;
 
 import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.common.state.ValueState;
