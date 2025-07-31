@@ -3,7 +3,6 @@ package com.example.streaming;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.CoGroupFunction;
 import org.apache.flink.api.common.functions.JoinFunction;
-import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.co.ProcessJoinFunction;
@@ -25,8 +24,12 @@ import org.apache.flink.util.Collector;
 public class JoiningStreams {
 
     public static void main(String[] args) throws Exception {
-        ParameterTool params = ParameterTool.fromArgs(args);
-        String type = params.getRequired("type");
+        if (args.length == 0) {
+            System.out.println("Usage: JoiningStreams {tumbling,sliding,session,interval,cogroup}");
+            return;
+        }
+
+        String type = args[0];
         if (type.equals("tumbling")) {
             tumblingWindowJoin();
         } else if (type.equals("sliding")) {
@@ -37,8 +40,6 @@ public class JoiningStreams {
             intervalJoin();
         } else if (type.equals("cogroup")) {
             coGroupJoin();
-        } else {
-            System.out.println("Usage: JoiningStreams --type {tumbling,sliding,session,interval,cogroup}");
         }
     }
 

@@ -9,6 +9,8 @@
 ## 流处理
 * [单词计数](src/main/java/com/example/streaming/SocketWindowWordCount.java)
 * [简单示例](src/main/java/com/example/streaming/AdultFilter.java)
+* [无状态转换示例](src/main/java/com/example/streaming/StatelessTransformationExample.java)
+* [分组聚合示例](src/main/java/com/example/streaming/KeyedStreamExample.java)
 * [状态示例：事件去重](src/main/java/com/example/streaming/EventDeduplicator.java)
 * [连接流示例：单词过滤](src/main/java/com/example/streaming/WordFilter.java)
 * [窗口函数示例：处理传感器读数](src/main/java/com/example/streaming/SensorReadingProcessor.java)

@@ -3,7 +3,6 @@ package com.example.streaming;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.java.tuple.Tuple3;
-import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.WindowedStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -24,8 +23,10 @@ import org.apache.flink.util.Collector;
 public class SensorReadingProcessor {
 
     public static void main(String[] args) throws Exception {
-        ParameterTool params = ParameterTool.fromArgs(args);
-        String mode = params.get("mode", "reducing");
+        if (args.length == 0) {
+            System.out.println("Usage: SensorReadingProcessor {reduce|process}");
+            return;
+        }
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
@@ -53,9 +54,12 @@ public class SensorReadingProcessor {
                 .keyBy(x -> x.key)
                 .window(TumblingEventTimeWindows.of(Time.minutes(1)));
 
-        DataStream<Tuple3<String, Long, Integer>> result = mode.equals("reducing") ?
-                windowedStream.reduce(new MyReducingMax(), new MyWindowFunction()) :
-                windowedStream.process(new MyWastefulMax());
+        DataStream<Tuple3<String, Long, Integer>> result;
+        String mode = args[0];
+        if (mode.equals("reduce"))
+            result = windowedStream.reduce(new MyReducingMax(), new MyWindowFunction());
+        else
+            result = windowedStream.process(new MyWastefulMax());
         result.print();
 
         env.execute();
