@@ -17,3 +17,8 @@
 * [join流示例](src/main/java/com/example/streaming/JoiningStreams.java)
 
 ## Table API
+* [单词计数](src/main/java/com/example/table/WordCount.java)
+* [Table查询示例：用户订单数据](src/main/java/com/example/table/UserOrderData.java)
+* [DataStream-Table转换示例](src/main/java/com/example/table/DataStreamTableConversion.java)
+* [ChangelogStream-Table转换](src/main/java/com/example/table/ChangelogStreamTableConversion.java)
+* [持续查询示例：用户点击事件](src/main/java/com/example/table/ContinuousQueryExample.java)
