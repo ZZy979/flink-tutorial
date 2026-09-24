@@ -15,6 +15,7 @@
 * [连接流示例：单词过滤](src/main/java/com/example/streaming/WordFilter.java)
 * [窗口函数示例：处理传感器读数](src/main/java/com/example/streaming/SensorReadingProcessor.java)
 * [join流示例](src/main/java/com/example/streaming/JoiningStreams.java)
+* [读取文件示例](src/main/java/com/example/streaming/FileSourceExample.java)
 
 ## Table API
 * [单词计数](src/main/java/com/example/table/WordCount.java)
