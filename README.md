@@ -16,6 +16,7 @@
 * [窗口函数示例：处理传感器读数](src/main/java/com/example/streaming/SensorReadingProcessor.java)
 * [join流示例](src/main/java/com/example/streaming/JoiningStreams.java)
 * [读取文件示例](src/main/java/com/example/streaming/FileSourceExample.java)
+* [广播流示例：形状模式匹配](src/main/java/com/example/streaming/ShapePatternMatcher.java)
 
 ## Table API
 * [单词计数](src/main/java/com/example/table/WordCount.java)
